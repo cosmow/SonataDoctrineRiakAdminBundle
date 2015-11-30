@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="sonata.admin.odm.filter.type.boolean.class">Sonata\DoctrineRiakAdminBundle\Filter\BooleanFilter</parameter>
+        <parameter key="sonata.admin.odm.filter.type.callback.class">Sonata\DoctrineRiakAdminBundle\Filter\CallbackFilter</parameter>
+        <parameter key="sonata.admin.odm.filter.type.choice.class">Sonata\DoctrineRiakAdminBundle\Filter\ChoiceFilter</parameter>
+        <parameter key="sonata.admin.odm.filter.type.model.class">Sonata\DoctrineRiakAdminBundle\Filter\ModelFilter</parameter>
+        <parameter key="sonata.admin.odm.filter.type.string.class">Sonata\DoctrineRiakAdminBundle\Filter\StringFilter</parameter>
+        <parameter key="sonata.admin.odm.filter.type.number.class">Sonata\DoctrineRiakAdminBundle\Filter\NumberFilter</parameter>
+        <parameter key="sonata.admin.odm.filter.type.date.class">Sonata\DoctrineRiakAdminBundle\Filter\DateFilter</parameter>
+        <parameter key="sonata.admin.odm.filter.type.datetime.class">Sonata\DoctrineRiakAdminBundle\Filter\DateTimeFilter</parameter>
+    </parameters>
+
+    <services>
+        <service id="sonata.admin.odm.filter.type.boolean" class="%sonata.admin.odm.filter.type.boolean.class%">
+            <tag name="sonata.admin.filter.type" alias="doctrine_riak_boolean" />
+        </service>
+
+        <service id="sonata.admin.odm.filter.type.callback" class="%sonata.admin.odm.filter.type.callback.class%">
+            <tag name="sonata.admin.filter.type" alias="doctrine_riak_callback" />
+        </service>
+
+        <service id="sonata.admin.odm.filter.type.choice" class="%sonata.admin.odm.filter.type.choice.class%">
+            <tag name="sonata.admin.filter.type" alias="doctrine_riak_choice" />
+        </service>
+
+        <service id="sonata.admin.odm.filter.type.model" class="%sonata.admin.odm.filter.type.model.class%">
+            <tag name="sonata.admin.filter.type" alias="doctrine_riak_model" />
+        </service>
+
+        <service id="sonata.admin.odm.filter.type.string" class="%sonata.admin.odm.filter.type.string.class%">
+            <tag name="sonata.admin.filter.type" alias="doctrine_riak_string" />
+        </service>
+
+        <service id="sonata.admin.odm.filter.type.number" class="%sonata.admin.odm.filter.type.number.class%">
+            <tag name="sonata.admin.filter.type" alias="doctrine_riak_number" />
+        </service>
+
+        <service id="sonata.admin.odm.filter.type.date" class="%sonata.admin.odm.filter.type.date.class%">
+            <tag name="sonata.admin.filter.type" alias="doctrine_riak_date" />
+        </service>
+
+        <service id="sonata.admin.odm.filter.type.datetime" class="%sonata.admin.odm.filter.type.datetime.class%">
+            <tag name="sonata.admin.filter.type" alias="doctrine_riak_datetime" />
+        </service>
+    </services>
+</container>

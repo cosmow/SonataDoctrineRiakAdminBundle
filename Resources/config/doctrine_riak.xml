@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+
+        <service id="sonata.admin.manager.doctrine_riak" class="Sonata\DoctrineRiakAdminBundle\Model\ModelManager">
+            <argument type="service" id="doctrine_riak" on-invalid="ignore" />
+        </service>
+
+        <!-- FormBuilder -->
+        <service id="sonata.admin.builder.doctrine_riak_form" class="Sonata\DoctrineRiakAdminBundle\Builder\FormContractor">
+            <argument type="service" id="form.factory" on-invalid="ignore" />
+        </service>
+
+        <!-- ListBuilder -->
+        <service id="sonata.admin.builder.doctrine_riak_list" class="Sonata\DoctrineRiakAdminBundle\Builder\ListBuilder" >
+            <argument type="service" id="sonata.admin.guesser.doctrine_riak_list_chain" on-invalid="ignore" />
+            <argument />
+        </service>
+
+        <service id="sonata.admin.guesser.doctrine_riak_list" class="Sonata\DoctrineRiakAdminBundle\Guesser\TypeGuesser">
+            <tag name="sonata.admin.guesser.doctrine_riak_list" />
+        </service>
+
+        <service id="sonata.admin.guesser.doctrine_riak_list_filter" class="Sonata\DoctrineRiakAdminBundle\Guesser\FilterTypeGuesser">
+            <tag name="sonata.admin.guesser.doctrine_riak_list" />
+        </service>
+
+        <service id="sonata.admin.guesser.doctrine_riak_list_chain" class="Sonata\AdminBundle\Guesser\TypeGuesserChain">
+            <argument type="collection">
+                <argument type="service" id="sonata.admin.guesser.doctrine_riak_list" />
+            </argument>
+        </service>
+
+        <!-- ShowBuilder  -->
+        <service id="sonata.admin.builder.doctrine_riak_show" class="Sonata\DoctrineRiakAdminBundle\Builder\ShowBuilder" >
+            <argument type="service" id="sonata.admin.guesser.doctrine_riak_show_chain" on-invalid="ignore" />
+            <argument />
+        </service>
+
+        <service id="sonata.admin.guesser.doctrine_riak_show" class="Sonata\DoctrineRiakAdminBundle\Guesser\TypeGuesser">
+            <tag name="sonata.admin.guesser.doctrine_riak_show" />
+        </service>
+
+        <service id="sonata.admin.guesser.doctrine_riak_show_chain" class="Sonata\AdminBundle\Guesser\TypeGuesserChain">
+            <argument type="collection">
+                <argument type="service" id="sonata.admin.guesser.doctrine_riak_list" />
+            </argument>
+        </service>
+
+        <!-- DatagridBuilder guesser -->
+        <service id="sonata.admin.builder.doctrine_riak_datagrid" class="Sonata\DoctrineRiakAdminBundle\Builder\DatagridBuilder">
+            <argument type="service" id="form.factory" on-invalid="ignore" />
+            <argument type="service" id="sonata.admin.builder.filter.factory" on-invalid="ignore" />
+            <argument type="service" id="sonata.admin.guesser.doctrine_riak_datagrid_chain" on-invalid="ignore" />
+            <argument>%form.type_extension.csrf.enabled%</argument>
+        </service>
+
+        <service id="sonata.admin.guesser.doctrine_riak_datagrid" class="Sonata\DoctrineRiakAdminBundle\Guesser\FilterTypeGuesser">
+            <tag name="sonata.admin.guesser.doctrine_riak_datagrid" />
+        </service>
+
+        <service id="sonata.admin.guesser.doctrine_riak_datagrid_chain" class="Sonata\AdminBundle\Guesser\TypeGuesserChain">
+            <argument type="collection">
+                <argument type="service" id="sonata.admin.guesser.doctrine_riak_list_filter" />
+            </argument>
+        </service>
+    </services>
+</container>
