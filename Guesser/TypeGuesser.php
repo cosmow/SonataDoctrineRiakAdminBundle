@@ -25,10 +25,10 @@ class TypeGuesser extends AbstractTypeGuesser
 
             switch ($mapping['type']) {
                 case ClassMetadataInfo::ONE:
-                    return new TypeGuess('mongo_one', array(), Guess::HIGH_CONFIDENCE);
+                    return new TypeGuess('riak_one', array(), Guess::HIGH_CONFIDENCE);
 
                 case ClassMetadataInfo::MANY:
-                    return new TypeGuess('mongo_many', array(), Guess::HIGH_CONFIDENCE);
+                    return new TypeGuess('riak_many', array(), Guess::HIGH_CONFIDENCE);
             }
         }
 

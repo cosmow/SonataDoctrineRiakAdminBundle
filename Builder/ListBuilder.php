@@ -2,7 +2,7 @@
 
 namespace CosmoW\DoctrineRiakAdminBundle\Builder;
 
-use Doctrine\ODM\MongoDB\Mapping\ClassMetadataInfo;
+use Doctrine\ODM\riakMongoDB\Mapping\ClassMetadataInfo;
 use Sonata\AdminBundle\Admin\AdminInterface;
 use Sonata\AdminBundle\Admin\FieldDescriptionCollection;
 use Sonata\AdminBundle\Admin\FieldDescriptionInterface;
@@ -126,9 +126,9 @@ class ListBuilder implements ListBuilderInterface
 
             if ($template === null) {
                 if ($fieldDescription->getMappingType() == ClassMetadataInfo::ONE) {
-                    $template = 'SonataDoctrineMongoDBAdminBundle:CRUD:list_mongo_one.html.twig';
+                    $template = 'SonataDoctrineRiakAdminBundle:CRUD:list_riak_one.html.twig';
                 } elseif ($fieldDescription->getMappingType() == ClassMetadataInfo::MANY) {
-                    $template = 'SonataDoctrineMongoDBAdminBundle:CRUD:list_mongo_many.html.twig';
+                    $template = 'SonataDoctrineRiakAdminBundle:CRUD:list_riak_many.html.twig';
                 }
             }
 

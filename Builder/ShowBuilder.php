@@ -117,9 +117,9 @@ class ShowBuilder implements ShowBuilderInterface
 
             if ($template === null) {
                 if ($fieldDescription->getMappingType() == ClassMetadataInfo::ONE) {
-                    $template = 'SonataDoctrineMongoDBAdminBundle:CRUD:show_mongo_one.html.twig';
+                    $template = 'SonataDoctrineRiakAdminBundle:CRUD:show_riak_one.html.twig';
                 } elseif ($fieldDescription->getMappingType() == ClassMetadataInfo::MANY) {
-                    $template = 'SonataDoctrineMongoDBAdminBundle:CRUD:show_mongo_many.html.twig';
+                    $template = 'SonataDoctrineRiakAdminBundle:CRUD:show_riak_many.html.twig';
                 }
             }
 

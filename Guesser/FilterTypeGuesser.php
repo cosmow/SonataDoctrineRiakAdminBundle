@@ -48,7 +48,7 @@ class FilterTypeGuesser extends AbstractTypeGuesser
                     $options['field_name'] = $mapping['fieldName'];
                     $options['mapping_type'] = $mapping['type'];
 
-                    return new TypeGuess('doctrine_mongo_model', $options, Guess::HIGH_CONFIDENCE);
+                    return new TypeGuess('doctrine_riak_model', $options, Guess::HIGH_CONFIDENCE);
             }
         }
 
@@ -59,7 +59,7 @@ class FilterTypeGuesser extends AbstractTypeGuesser
                 $options['field_type'] = 'sonata_type_boolean';
                 $options['field_options'] = array();
 
-                return new TypeGuess('doctrine_mongo_boolean', $options, Guess::HIGH_CONFIDENCE);
+                return new TypeGuess('doctrine_riak_boolean', $options, Guess::HIGH_CONFIDENCE);
 //            case 'datetime':
 //            case 'vardatetime':
 //            case 'datetimetz':
@@ -68,23 +68,23 @@ class FilterTypeGuesser extends AbstractTypeGuesser
 //                return new TypeGuess('doctrine_orm_date', $options, Guess::HIGH_CONFIDENCE);
             case 'decimal':
             case 'float':
-                return new TypeGuess('doctrine_mongo_number', $options, Guess::MEDIUM_CONFIDENCE);
+                return new TypeGuess('doctrine_riak_number', $options, Guess::MEDIUM_CONFIDENCE);
             case 'int':
             case 'bigint':
             case 'smallint':
                 $options['field_type'] = 'number';
 
-                return new TypeGuess('doctrine_mongo_number', $options, Guess::MEDIUM_CONFIDENCE);
+                return new TypeGuess('doctrine_riak_number', $options, Guess::MEDIUM_CONFIDENCE);
             case 'id':
             case 'string':
             case 'text':
                 $options['field_type'] = 'text';
 
-                return new TypeGuess('doctrine_mongo_string', $options, Guess::MEDIUM_CONFIDENCE);
+                return new TypeGuess('doctrine_riak_string', $options, Guess::MEDIUM_CONFIDENCE);
             case 'time':
-                return new TypeGuess('doctrine_mongo_time', $options, Guess::HIGH_CONFIDENCE);
+                return new TypeGuess('doctrine_riak_time', $options, Guess::HIGH_CONFIDENCE);
             default:
-                return new TypeGuess('doctrine_mongo_string', $options, Guess::LOW_CONFIDENCE);
+                return new TypeGuess('doctrine_riak_string', $options, Guess::LOW_CONFIDENCE);
         }
     }
 }
