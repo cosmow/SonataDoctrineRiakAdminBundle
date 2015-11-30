@@ -5,27 +5,45 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
+        <service id="doctrine_riak" class="%doctrine_riak.odm.class%">
+            <argument>Riak</argument>
+            <argument type="collection"></argument>
+            <argument>%doctrine_riak.odm.document_managers%</argument>
+            <argument></argument>
+            <argument></argument>
+            <argument>CosmoW\DoctrineRiakAdminBundle\Proxy\Proxy</argument>
+            <!--
+               -<argument>%doctrine_riak.odm.connections%</argument>
+               -<argument>%doctrine_riak.odm.document_managers%</argument>
+               -<argument>%doctrine_riak.odm.default_connection%</argument>
+               -<argument>%doctrine_riak.odm.default_document_manager%</argument>
+               -<argument>Doctrine\ODM\MongoDB\Proxy\Proxy</argument>
+               -->
+            <call method="setContainer">
+                <argument type="service" id="service_container" />
+            </call>
+        </service>
 
-        <service id="sonata.admin.manager.doctrine_riak" class="Sonata\DoctrineRiakAdminBundle\Model\ModelManager">
+        <service id="sonata.admin.manager.doctrine_riak" class="CosmoW\DoctrineRiakAdminBundle\Model\ModelManager">
             <argument type="service" id="doctrine_riak" on-invalid="ignore" />
         </service>
 
         <!-- FormBuilder -->
-        <service id="sonata.admin.builder.doctrine_riak_form" class="Sonata\DoctrineRiakAdminBundle\Builder\FormContractor">
+        <service id="sonata.admin.builder.doctrine_riak_form" class="CosmoW\DoctrineRiakAdminBundle\Builder\FormContractor">
             <argument type="service" id="form.factory" on-invalid="ignore" />
         </service>
 
         <!-- ListBuilder -->
-        <service id="sonata.admin.builder.doctrine_riak_list" class="Sonata\DoctrineRiakAdminBundle\Builder\ListBuilder" >
+        <service id="sonata.admin.builder.doctrine_riak_list" class="CosmoW\DoctrineRiakAdminBundle\Builder\ListBuilder" >
             <argument type="service" id="sonata.admin.guesser.doctrine_riak_list_chain" on-invalid="ignore" />
             <argument />
         </service>
 
-        <service id="sonata.admin.guesser.doctrine_riak_list" class="Sonata\DoctrineRiakAdminBundle\Guesser\TypeGuesser">
+        <service id="sonata.admin.guesser.doctrine_riak_list" class="CosmoW\DoctrineRiakAdminBundle\Guesser\TypeGuesser">
             <tag name="sonata.admin.guesser.doctrine_riak_list" />
         </service>
 
-        <service id="sonata.admin.guesser.doctrine_riak_list_filter" class="Sonata\DoctrineRiakAdminBundle\Guesser\FilterTypeGuesser">
+        <service id="sonata.admin.guesser.doctrine_riak_list_filter" class="CosmoW\DoctrineRiakAdminBundle\Guesser\FilterTypeGuesser">
             <tag name="sonata.admin.guesser.doctrine_riak_list" />
         </service>
 
@@ -36,12 +54,12 @@
         </service>
 
         <!-- ShowBuilder  -->
-        <service id="sonata.admin.builder.doctrine_riak_show" class="Sonata\DoctrineRiakAdminBundle\Builder\ShowBuilder" >
+        <service id="sonata.admin.builder.doctrine_riak_show" class="CosmoW\DoctrineRiakAdminBundle\Builder\ShowBuilder" >
             <argument type="service" id="sonata.admin.guesser.doctrine_riak_show_chain" on-invalid="ignore" />
             <argument />
         </service>
 
-        <service id="sonata.admin.guesser.doctrine_riak_show" class="Sonata\DoctrineRiakAdminBundle\Guesser\TypeGuesser">
+        <service id="sonata.admin.guesser.doctrine_riak_show" class="CosmoW\DoctrineRiakAdminBundle\Guesser\TypeGuesser">
             <tag name="sonata.admin.guesser.doctrine_riak_show" />
         </service>
 
@@ -52,14 +70,14 @@
         </service>
 
         <!-- DatagridBuilder guesser -->
-        <service id="sonata.admin.builder.doctrine_riak_datagrid" class="Sonata\DoctrineRiakAdminBundle\Builder\DatagridBuilder">
+        <service id="sonata.admin.builder.doctrine_riak_datagrid" class="CosmoW\DoctrineRiakAdminBundle\Builder\DatagridBuilder">
             <argument type="service" id="form.factory" on-invalid="ignore" />
             <argument type="service" id="sonata.admin.builder.filter.factory" on-invalid="ignore" />
             <argument type="service" id="sonata.admin.guesser.doctrine_riak_datagrid_chain" on-invalid="ignore" />
             <argument>%form.type_extension.csrf.enabled%</argument>
         </service>
 
-        <service id="sonata.admin.guesser.doctrine_riak_datagrid" class="Sonata\DoctrineRiakAdminBundle\Guesser\FilterTypeGuesser">
+        <service id="sonata.admin.guesser.doctrine_riak_datagrid" class="CosmoW\DoctrineRiakAdminBundle\Guesser\FilterTypeGuesser">
             <tag name="sonata.admin.guesser.doctrine_riak_datagrid" />
         </service>
 

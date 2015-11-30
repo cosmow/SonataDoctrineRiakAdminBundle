@@ -13,6 +13,8 @@
         <parameter key="sonata.admin.odm.filter.type.number.class">Sonata\DoctrineRiakAdminBundle\Filter\NumberFilter</parameter>
         <parameter key="sonata.admin.odm.filter.type.date.class">Sonata\DoctrineRiakAdminBundle\Filter\DateFilter</parameter>
         <parameter key="sonata.admin.odm.filter.type.datetime.class">Sonata\DoctrineRiakAdminBundle\Filter\DateTimeFilter</parameter>
+
+        <parameter key="doctrine_riak.odm.class">CosmoW\DoctrineRiakAdminBundle\ManagerRegistry</parameter>
     </parameters>
 
     <services>
