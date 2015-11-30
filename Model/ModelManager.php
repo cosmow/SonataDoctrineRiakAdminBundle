@@ -1,6 +1,6 @@
 <?php
 
-namespace CosmoW\DoctrineRiakAdminBundle\Guesser;
+namespace CosmoW\DoctrineRiakAdminBundle\Model;
 
 use Doctrine\ODM\MongoDB\Query\Builder;
 use Exporter\Source\DoctrineODMQuerySourceIterator;
