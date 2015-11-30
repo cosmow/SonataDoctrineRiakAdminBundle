@@ -1,8 +1,8 @@
 {
     "name": "cosmow/doctrine-riak-admin-bundle",
     "type": "symfony-bundle",
-    "description": "Symfony Sonata / Integrate Doctrine MongoDB ODM into the SonataAdminBundle",
-    "keywords": ["Admin Generator", "admin", "sonata", "bootstrap", "generator", "Mongo", "MongoDB"],
+    "description": "Symfony Sonata / Integrate Doctrine Riak into the SonataAdminBundle",
+    "keywords": ["Admin Generator", "admin", "sonata", "bootstrap", "generator", "Riak"],
     "homepage": "http://cosmow",
     "license": "MIT",
     "authors": [
@@ -12,8 +12,7 @@
         }
     ],
     "require": {
-        "doctrine/mongodb-odm-bundle": "~3.0",
-        "doctrine/mongodb-odm": "~1.0",
+        "doctrine/KeyValueStore": "v0.2",
         "sonata-project/admin-bundle": "~2.3"
     },
     "require-dev": {
@@ -27,7 +26,7 @@
         "sonata-project/admin-bundle-persistency-layer": "1.0.0"
     },
     "autoload": {
-        "psr-0": {"Sonata\\DoctrineMongoDBAdminBundle": ""}
+        "psr-0": {"CosmoW\\DoctrineRiakAdminBundle": ""}
     },
     "target-dir": "CosmoW/DoctrineRiakAdminBundle",
     "extra": {
