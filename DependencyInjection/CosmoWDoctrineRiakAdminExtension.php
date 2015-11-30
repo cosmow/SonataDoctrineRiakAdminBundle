@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
  * SonataAdminBundleExtension.
  *
  */
-class SonataDoctrineRiakAdminExtension extends AbstractSonataAdminExtension
+class CosmoWDoctrineRiakAdminExtension extends AbstractSonataAdminExtension
 {
     /**
      * @param array            $configs   An array of configuration settings
