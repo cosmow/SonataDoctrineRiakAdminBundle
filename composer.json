@@ -10,7 +10,7 @@
             "name": "ckmm",
             "email": "",
             "homepage": "http://cosmow"
-        },
+        }
     ],
     "require": {
         "doctrine/mongodb-odm-bundle": "~3.0",
