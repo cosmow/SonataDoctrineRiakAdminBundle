@@ -8,7 +8,10 @@
         <service id="doctrine_riak" class="%doctrine_riak.odm.class%">
             <argument>Riak</argument>
             <argument type="collection"></argument>
-            <argument>%doctrine_riak.odm.document_managers%</argument>
+            <argument type="collection"></argument>
+            <!--
+               -<argument>%doctrine_riak.odm.document_managers%</argument>
+               -->
             <argument></argument>
             <argument></argument>
             <argument>CosmoW\DoctrineRiakAdminBundle\Proxy\Proxy</argument>
