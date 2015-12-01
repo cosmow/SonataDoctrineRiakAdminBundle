@@ -13,7 +13,7 @@
     ],
     "require": {
         "doctrine/key-value-store": "0.2",
-        "cosmow/riak-odm-bundle": "0.1-dev",
+        "cosmow/riak-odm-bundle": "dev-master",
         "sonata-project/admin-bundle": "~2.3"
     },
     "require-dev": {
