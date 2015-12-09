@@ -2,7 +2,7 @@
 
 namespace CosmoW\DoctrineRiakAdminBundle;
 
-use Doctrine\ODM\MongoDB\MongoDBException;
+use CosmoW\ODM\Riak\RiakException;
 use Symfony\Bridge\Doctrine\ManagerRegistry as BaseManagerRegistry;
 
 class ManagerRegistry extends BaseManagerRegistry
@@ -12,16 +12,16 @@ class ManagerRegistry extends BaseManagerRegistry
      *
      * @param string $alias
      * @return string
-     * @throws MongoDBException
+     * @throws RiakException
      */
     public function getAliasNamespace($alias)
     {
         foreach (array_keys($this->getManagers()) as $name) {
             try {
                 return $this->getManager($name)->getConfiguration()->getDocumentNamespace($alias);
-            } catch (MongoDBException $e) {
+            } catch (RiakException $e) {
             }
         }
-        throw MongoDBException::unknownDocumentNamespace($alias);
+        throw RiakException::unknownDocumentNamespace($alias);
     }
 }

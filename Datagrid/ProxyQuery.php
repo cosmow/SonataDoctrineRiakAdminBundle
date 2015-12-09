@@ -2,7 +2,7 @@
 
 namespace CosmoW\DoctrineRiakAdminBundle\Datagrid;
 
-use Doctrine\ODM\MongoDB\Query\Builder;
+use CosmoW\ODM\Riak\Query\Builder;
 use Sonata\AdminBundle\Datagrid\ProxyQueryInterface;
 
 /**
@@ -17,7 +17,7 @@ class ProxyQuery implements ProxyQueryInterface
     protected $maxResults;
 
     /**
-     * @param \Doctrine\ODM\MongoDB\Query\Builder $queryBuilder
+     * @param CosmoW\ODM\Riak\Query\Builder $queryBuilder
      */
     public function __construct(Builder $queryBuilder)
     {

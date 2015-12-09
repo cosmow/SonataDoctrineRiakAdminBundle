@@ -2,7 +2,7 @@
 
 namespace CosmoW\DoctrineRiakAdminBundle\Datagrid;
 
-use Doctrine\ODM\MongoDB\Query\Query;
+use CosmoW\ODM\Riak\Query\Query;
 use Sonata\AdminBundle\Datagrid\Pager as BasePager;
 
 /**

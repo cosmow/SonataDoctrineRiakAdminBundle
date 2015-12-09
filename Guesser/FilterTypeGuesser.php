@@ -2,7 +2,7 @@
 
 namespace CosmoW\DoctrineRiakAdminBundle\Guesser;
 
-use Doctrine\ODM\MongoDB\Mapping\ClassMetadataInfo;
+use CosmoW\ODM\Riak\Mapping\ClassMetadataInfo;
 use Sonata\AdminBundle\Model\ModelManagerInterface;
 use Symfony\Component\Form\Guess\Guess;
 use Symfony\Component\Form\Guess\TypeGuess;

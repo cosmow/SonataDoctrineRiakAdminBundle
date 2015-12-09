@@ -9,7 +9,7 @@ use Sonata\AdminBundle\Datagrid\Datagrid;
 use Sonata\AdminBundle\Datagrid\DatagridInterface;
 use Sonata\AdminBundle\Filter\FilterFactoryInterface;
 use Sonata\AdminBundle\Guesser\TypeGuesserInterface;
-use Sonata\DoctrineMongoDBAdminBundle\Datagrid\Pager;
+use CosmoW\DoctrineRiakAdminBundle\Datagrid\Pager;
 use Symfony\Component\Form\FormFactory;
 
 class DatagridBuilder implements DatagridBuilderInterface

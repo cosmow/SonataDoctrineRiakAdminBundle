@@ -89,7 +89,7 @@ class ModelFilter extends Filter
     }
 
     /**
-     * Return \MongoId if $id is MongoId in string representation, otherwise custom string.
+     * Return \RiakId if $id is RiakId in string representation, otherwise custom string.
      *
      * @param mixed $id
      *

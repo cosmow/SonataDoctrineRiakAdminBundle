@@ -2,7 +2,7 @@
 
 namespace CosmoW\DoctrineRiakAdminBundle\Util;
 
-use Doctrine\ODM\MongoDB\DocumentManager;
+use CosmoW\ODM\Riak\DocumentManager;
 use Sonata\AdminBundle\Admin\AdminInterface;
 use Sonata\AdminBundle\Exception\ModelManagerException;
 use Sonata\AdminBundle\Security\Handler\AclSecurityHandlerInterface;

@@ -2,14 +2,14 @@
 
 namespace CosmoW\DoctrineRiakAdminBundle\Model;
 
-use Doctrine\ODM\MongoDB\Query\Builder;
+use CosmoW\ODM\Riak\Query\Builder;
 use Exporter\Source\DoctrineODMQuerySourceIterator;
 use Sonata\AdminBundle\Admin\FieldDescriptionInterface;
 use Sonata\AdminBundle\Datagrid\DatagridInterface;
 use Sonata\AdminBundle\Datagrid\ProxyQueryInterface;
 use Sonata\AdminBundle\Model\ModelManagerInterface;
-use Sonata\DoctrineMongoDBAdminBundle\Admin\FieldDescription;
-use Sonata\DoctrineMongoDBAdminBundle\Datagrid\ProxyQuery;
+use CosmoW\DoctrineRiakAdminBundle\Admin\FieldDescription;
+use CosmoW\DoctrineRiakAdminBundle\Datagrid\ProxyQuery;
 use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Component\Form\Exception\PropertyAccessDeniedException;
 
@@ -44,7 +44,7 @@ class ModelManager implements ModelManagerInterface
      *                                 property string)
      *
      * @return array(
-     *                \Doctrine\ODM\MongoDB\Mapping\ClassMetadata $parentMetadata,
+     *                CosmoW\ODM\Riak\Mapping\ClassMetadata $parentMetadata,
      *                string $lastPropertyName,
      *                array $parentAssociationMappings
      *                )
@@ -182,7 +182,7 @@ class ModelManager implements ModelManagerInterface
      *
      * @throw \RuntimeException
      *
-     * @return \Doctrine\ODM\MongoDB\DocumentManager
+     * @return CosmoW\ODM\Riak\DocumentManager
      */
     public function getDocumentManager($class)
     {

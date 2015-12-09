@@ -4,14 +4,14 @@ namespace CosmoW\DoctrineRiakAdminBundle\Guesser;
 
 use Doctrine\ORM\Mapping\MappingException;
 use Sonata\AdminBundle\Guesser\TypeGuesserInterface;
-use Sonata\DoctrineMongoDBAdminBundle\Model\ModelManager;
+use CosmoW\DoctrineRiakAdminBundle\Model\ModelManager;
 
 abstract class AbstractTypeGuesser implements TypeGuesserInterface
 {
     /**
      * @param string                                                $baseClass
      * @param string                                                $propertyFullName
-     * @param \Sonata\DoctrineMongoDBAdminBundle\Model\ModelManager $modelManager
+     * @param CosmoW\DoctrineRiakAdminBundle\Model\ModelManager $modelManager
      *
      * @return array|null
      */

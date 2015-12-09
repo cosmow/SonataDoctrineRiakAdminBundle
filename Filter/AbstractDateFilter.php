@@ -125,7 +125,7 @@ abstract class AbstractDateFilter extends Filter
     }
 
     /**
-     * Resolves DataType:: constants to MongoDb operators.
+     * Resolves DataType:: constants to RiakDb operators.
      *
      * @param int $type
      *
