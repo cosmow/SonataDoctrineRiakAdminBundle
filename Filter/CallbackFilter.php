@@ -5,15 +5,6 @@ namespace CosmoW\DoctrineRiakAdminBundle\Filter;
 use Sonata\AdminBundle\Datagrid\ProxyQueryInterface;
 use Sonata\CoreBundle\Form\Type\BooleanType;
 
-class BooleanFilter extends Filter
-{
-    /**
-     * @param ProxyQueryInterface $queryBuilder
-     * @param string              $alias
-     * @param string              $field
-
-use Sonata\AdminBundle\Datagrid\ProxyQueryInterface;
-
 class CallbackFilter extends Filter
 {
     /**
