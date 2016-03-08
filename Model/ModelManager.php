@@ -2,7 +2,7 @@
 
 namespace CosmoW\DoctrineRiakAdminBundle\Model;
 
-use CosmoW\ODM\Riak\Query\Builder;
+//use CosmoW\ODM\Riak\Query\Builder;
 use Exporter\Source\DoctrineODMQuerySourceIterator;
 use Sonata\AdminBundle\Admin\FieldDescriptionInterface;
 use Sonata\AdminBundle\Datagrid\DatagridInterface;
@@ -12,6 +12,14 @@ use CosmoW\DoctrineRiakAdminBundle\Admin\FieldDescription;
 use CosmoW\DoctrineRiakAdminBundle\Datagrid\ProxyQuery;
 use Symfony\Bridge\Doctrine\ManagerRegistry;
 use Symfony\Component\Form\Exception\PropertyAccessDeniedException;
+use Doctrine\Common\Annotations\AnnotationReader;
+use Doctrine\Common\Cache\ArrayCache;
+use Doctrine\KeyValueStore\Configuration;
+use Doctrine\KeyValueStore\Mapping\AnnotationDriver;
+use Doctrine\KeyValueStore\Storage\DoctrineCacheStorage;
+use Doctrine\KeyValueStore\Storage\RiakStorage;
+use Doctrine\KeyValueStore\EntityManager;
+use Riak\Client;
 
 class ModelManager implements ModelManagerInterface
 {
@@ -32,7 +40,8 @@ class ModelManager implements ModelManagerInterface
      */
     public function getMetadata($class)
     {
-        return $this->getDocumentManager($class)->getMetadataFactory()->getMetadataFor($class);
+        //return $this->getDocumentManager($class)->getMetadataFactory()->getMetadataFor($class);
+        return $this->getDocumentManager($class)->getClassMetadata($class);
     }
 
     /**
@@ -70,7 +79,7 @@ class ModelManager implements ModelManagerInterface
      */
     public function hasMetadata($class)
     {
-        return $this->getDocumentManager($class)->getMetadataFactory()->hasMetadataFor($class);
+        return true;
     }
 
     /**
@@ -190,7 +199,19 @@ class ModelManager implements ModelManagerInterface
             $class = get_class($class);
         }
 
-        $dm = $this->registry->getManagerForClass($class);
+        //$dm = $this->registry->getManagerForClass($class);
+
+        $cache = new ArrayCache;
+        $client = new Client('localhost', 8098, 'riak', 'mapred');
+        $storage = new RiakStorage($client);
+
+        $reader = new AnnotationReader();
+        $metadata = new AnnotationDriver($reader);
+        $config = new Configuration();
+        $config->setMappingDriverImpl($metadata);
+        $config->setMetadataCache($cache);
+
+        $dm = new EntityManager($storage, $config);
 
         if (!$dm) {
             throw new \RuntimeException(sprintf('No document manager defined for class %s', $class));
@@ -273,11 +294,12 @@ class ModelManager implements ModelManagerInterface
         }
 
         // the entities is not managed
-        if (!$document || !$this->getDocumentManager($document)->getUnitOfWork()->isInIdentityMap($document)) {
+        if (!$document) {
             return;
         }
-
-        $values = $this->getIdentifierValues($document);
+        $dm= $this->getDocumentManager($document);
+        $metadata = $dm->getClassMetadata(get_class($document));
+        $values = $metadata->getIdentifierValues($document);
 
         return implode(self::ID_SEPARATOR, $values);
     }
@@ -509,3 +531,4 @@ class ModelManager implements ModelManagerInterface
         return $collection->removeElement($element);
     }
 }
+
